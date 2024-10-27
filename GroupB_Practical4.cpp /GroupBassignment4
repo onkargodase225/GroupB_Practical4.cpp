@@ -1,0 +1,81 @@
+# Selection Sort
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(0, n):
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+    return arr
+
+# Bubble Sort
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(0, n - 1):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+# Display Top Five Scores
+def display_top_five(arr):
+    # Sort in descending order and get the top five scores
+    sorted_arr = sorted(arr, reverse=True)
+    top_five = sorted_arr[:5]
+    return top_five
+
+# Main Program
+percentages = []
+student = int(input("Enter the number of students in first year: "))
+for i in range(student):
+    percent = int(input(f"Enter the marks of student {i + 1}: "))
+    percentages.append(percent)
+
+flag = 1
+while flag:
+    print("\n..........MENU...........")
+    print("1. Sorted array of percentages using Selection Sort")
+    print("2. Sorted array of percentages using Bubble Sort")
+    print("3. Display Top Five Scores")
+    print("4. Exit")
+    
+    choice = int(input("Enter your choice: "))
+    
+    if choice == 1:
+        # Using Selection Sort
+        sorted_percentages = selection_sort(percentages.copy())  # Use a copy to preserve original data
+        print("Sorted array using Selection Sort:")
+        print(sorted_percentages)
+        
+    elif choice == 2:
+        # Using Bubble Sort
+        sorted_percentages = bubble_sort(percentages.copy())  # Use a copy to preserve original data
+        print("Sorted array using Bubble Sort:")
+        print(sorted_percentages)
+        
+    elif choice == 3:
+        # Display Top Five Scores
+        top_five = display_top_five(percentages)
+        print("Top Five Scores:")
+        for score in top_five:
+            print(score)
+    
+    elif choice == 4:
+        # Exit the loop
+        flag = 0
+        print("Thankyou for using Program")
+        break;
+        
+    
+    
+    
+    else:
+        print("Invalid choice, please try again.")
+
+    a=input("enter your choice(yes/No):")
+    if a=="yes":
+        flag=1
+    else:
+        flag=0
+        print("Thankyou for using Program")
